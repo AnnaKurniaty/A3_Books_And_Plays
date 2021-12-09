@@ -36,4 +36,13 @@ class M_login extends CI_Model
         return $query->row();
     }
   }
+
+  public function getRoles(){
+    return $this->db->query("SELECT * FROM ROLES");
+  }
+
+  public function add_users($NAME,$EMAIL,$PASSWORD,$ROLES_ID){
+    return $this->db->query("CALL insert_siswa('$NAME','$EMAIL','$PASSWORD','$ROLES_ID')");
+  }
+
 }

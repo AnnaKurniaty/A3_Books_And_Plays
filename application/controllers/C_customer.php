@@ -8,16 +8,14 @@ class C_customer extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url'));
 
-        if($this->session->userdata('STATUS') != "login")
+        if(!$this->session->userdata('logged_in'))
         {
-            redirect(base_url("login.php/C_login"));
-        }
-        if($this->session->userdata('ROLES_ID') != "1")
-        {
-            redirect(base_url("login.php/C_login"));
+            $pemberitahuan = "<div class='alert alert-warning'>Anda harus login dulu </div>";
+            $this->session->set_flashdata('pemberitahuan', $pemberitahuan);
+            redirect('C_login');
         }
 
-        $this->load->helper('download');
+        $session_data = $this->session->userdata('logged_in');
     }
  
 	function index(){

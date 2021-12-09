@@ -9,6 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 <h1>Login berhasil !</h1>
 	<h2>Hai, <?php echo $this->session->userdata("NAME"); ?></h2>
-	<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
+	<a href="<?php echo base_url('index.php/C_login/logout'); ?>">Logout</a>
 </body>
 </html>
