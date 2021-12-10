@@ -48,7 +48,7 @@
           <div class="col-8">
             <div class="icheck-primary">
               <label for="remember">
-                <a href="<?php echo base_url() ?>index.php/C_login/register">Register</a>
+                <a href="<?php echo base_url() ?>index.php/C_register">Register</a>
               </label>
             </div>
           </div>

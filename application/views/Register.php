@@ -29,7 +29,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Register to make your account</p>
 
-      <form action="<?php echo base_url("index.php/C_login/proses_register"); ?>" method="post">
+      <form action="<?php echo base_url("index.php/C_register/add"); ?>" method="post">
         <div class="input-group mb-2">
           <input type="text" name="NAME" class="form-control" placeholder="Name">
           <div class="input-group-append">
@@ -54,8 +54,7 @@
         <div class="mb-1">
           <label for="file-upload">Image</label>
           <div>
-              <span class="d-block btn bg-primary text-white select-files">Select image</span>
-              <input type="file" class="form-control-file d-none" id="file-upload" name="IMAGE">
+              <input type="file" class="form-control-file" id="file-upload" name="IMAGE">
           </div>
         </div>
         <div class="mb-1">
@@ -70,13 +69,19 @@
                 }
               ?>
             </select>
-            <!-- <div class="form-error"><?= form_error('ID'); ?></div> -->
           </div>
         </div>
         <div class="row">
           <!-- /.col -->
+          <div class="col-8">
+            <div class="icheck-primary">
+              <label for="remember">
+                <a href="<?php echo base_url() ?>index.php/C_login">Login</a>
+              </label>
+            </div>
+          </div>
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign Up</button>
+            <button type="submit" name="submit" value="upload" class="btn btn-primary btn-block btn-flat">Sign Up</button>
           </div>
           <!-- /.col -->
         </div>

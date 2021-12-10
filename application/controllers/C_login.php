@@ -64,45 +64,6 @@ class C_login extends CI_Controller{
         session_destroy();
         redirect(base_url("index.php/C_login"));
     }
-
-    public function register(){
-        $data['ROLES'] = $this->M_login->getRoles()->result();
-        $this->load->view("register", $data);
-    }
-
-    public function upload_image(){
-        $config['upload_path'] = './assets/images/users/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size']  = '2048';
-        $config['remove_space'] = TRUE;
-      
-        $this->load->library('upload', $config); // Load konfigurasi uploadnya
-        if($this->upload->do_upload('input_gambar')){ // Lakukan upload dan Cek jika proses upload berhasil
-          // Jika berhasil :
-          $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
-          return $return;
-        }else{
-          // Jika gagal :
-          $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
-          return $return;
-        }
-      }
-
-    public function proses_register(){
-        $ROLES_ID = $this->uri->segment(3);
-        $NAME = $this->input->post('NAME');
-        $EMAIL = $this->input->post('EMAIL');
-        $PASSWORD = $this->input->post('PASSWORD');
-
-        // validasi
-        if($this->M_login->add_users($NAME,$EMAIL,$PASSWORD,$ROLES_ID)){
-            $this->session->set_flashdata('flash', 'Berhasil !');
-            redirect(base_url("index.php/C_login"));
-        }else{
-            $this->session->set_flashdata('flash' , 'Gagal !');
-            redirect(base_url("index.php/C_login"));
-        }
-    }
 }
 
 ?>
