@@ -29,7 +29,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Register to make your account</p>
 
-      <form action="<?php echo base_url("index.php/C_register/add"); ?>" method="post">
+      <form action="<?php echo base_url("index.php/C_register/add"); ?>" method="post" enctype="multipart/form-data">
         <div class="input-group mb-2">
           <input type="text" name="NAME" class="form-control" placeholder="Name">
           <div class="input-group-append">
@@ -54,7 +54,7 @@
         <div class="mb-1">
           <label for="file-upload">Image</label>
           <div>
-              <input type="file" class="form-control-file" id="file-upload" name="IMAGE">
+              <input type="file" class="form-control-file" id="file-upload" name="gambar">
           </div>
         </div>
         <div class="mb-1">

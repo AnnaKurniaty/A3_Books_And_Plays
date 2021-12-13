@@ -2,7 +2,8 @@
 
 class M_customer extends CI_Model
 { 
-  public function login($table, $where){
-      return $this->db->get_where($table, $where);
-  }	
+  public function getDataVenues() {
+    return $this->db->query("SELECT * FROM VENUES");
+  }
+
 }

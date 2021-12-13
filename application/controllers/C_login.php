@@ -20,10 +20,11 @@ class C_login extends CI_Controller{
 
         $cek = $this->M_login->login("USERS", $where)->num_rows();
         if($cek > 0){
-            $query = "SELECT * FROM USERS a, ROLES b WHERE a.ROLES_ID = b.ID AND EMAIL = '$email'" ;
+            $query = "SELECT a.ID, a.NAME, a.EMAIL, a.PASSWORD, a.IMAGE, b.ID as ROLES_ID FROM USERS a, ROLES b WHERE a.ROLES_ID = b.ID AND EMAIL = '$email'" ;
             $data_akun = $this->M_login->return_result($query);
 
             foreach($data_akun as $a){
+                $id = $a->ID;
                 $name = $a->NAME;
                 $email = $a->EMAIL;
                 $password = $a->PASSWORD;
@@ -32,6 +33,7 @@ class C_login extends CI_Controller{
             }
 
             $data_session = array(
+                'ID' => $id,
                 'NAME' => $name,
                 'EMAIL' => $email,
                 'PASSWORD' => $password,
@@ -41,15 +43,15 @@ class C_login extends CI_Controller{
 
             switch($a->ROLES_ID){
                 case "1":
-                    $this->session->set_userdata('logged_in', $data_session);
+                    $this->session->set_userdata($data_session);
                     redirect(base_url("index.php/C_customer"));
                 break;
                 case "2":
-                    $this->session->set_userdata('logged_in', $data_session);
+                    $this->session->set_userdata($data_session);
                     redirect(base_url("index.php/C_owner"));
                 break;
                 case "3":
-                    $this->session->set_userdata('logged_in', $data_session);
+                    $this->session->set_userdata($data_session);
                     redirect(base_url("index.php/C_admin"));
                 break;
             }
