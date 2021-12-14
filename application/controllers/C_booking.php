@@ -20,6 +20,8 @@ class C_booking extends CI_Controller{
 	}
 
     function addBooking() {
-        $this->M_booking->insetBooking();
+        // $this->M_booking->insetBooking();
+        $this->M_booking->get_insertBooking();
     }
+
 }

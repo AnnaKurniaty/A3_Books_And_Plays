@@ -699,25 +699,4 @@ class CI_DB_oci8_driver extends CI_DB {
 		parent::_reset_select();
 	}
 
-	public function call_function_oci($functions, $params){
-		if ($this->conn_id) {
-		 
-		// Create the statement and bind the variables (parameter, value, size)
-		$stid = oci_parse($this->conn_id, "DECLARE RETVAL CHAR; BEGIN :RETVAL := ".$functions."; END;");
-		foreach ($params as $variable)
-		oci_bind_by_name($stid, $variable["name"], $variable["value"], $variable["length"]);
-		 
-		// Create the cursor and bind it
-		$p_cursor = oci_new_cursor($this->conn_id);
-		oci_bind_by_name($stid, ':RETVAL', $p_cursor, -1, OCI_B_CURSOR);
-		 
-		// Execute the Statement and fetch the data
-		oci_execute($stid);
-		oci_execute($p_cursor, OCI_DEFAULT);
-		oci_fetch_all($p_cursor, $data, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-		 
-		// Return the data
-		return $data;
-		}
-	}
 }

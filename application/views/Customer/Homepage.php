@@ -12,13 +12,12 @@
   </head>
   <body>
     <div class="sidebar">
-	  <div class="title">
-			<span>Book And Play</span>
-	  </div>
-      <div class="image">
-        <img src="<?php echo base_url(); ?>assets/images/users/<?php echo $this->session->IMAGE; ?>" alt="" />
+      <div class="sidebar-user">
+        <div class="image">
+          <img src="<?php echo base_url(); ?>assets/images/users/<?php echo $this->session->IMAGE; ?>" alt="" />
+        </div>
+        <h4 class="username"><?php echo $this->session->NAME; ?></h4>
       </div>
-      <h4 class="username"><?php echo $this->session->NAME; ?></h4>
       <a href="<?= base_url(); ?>index.php/C_customer" class="<?php if ($menu == "dasboard") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-desktop"></i><span>List Venue</span></a>
       <a href="<?= base_url(); ?>index.php/C_customer/testing" class="<?php if ($menu == "testing") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-cogs"></i><span>List Field</span></a>
       <a href="#"><i class="fas fa-table"></i><span>List My Bookings</span></a>

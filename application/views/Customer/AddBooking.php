@@ -17,13 +17,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="datetime-local" name="PlayDateEnd" class="form-control" placeholder="">
-          <div class="input-group-append">
-            <div class="input-group-text">
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
           <input type="number" name="Duration" class="form-control" placeholder="Duration">
           <div class="input-group-append">
             <div class="input-group-text">
