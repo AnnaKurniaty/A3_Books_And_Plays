@@ -1,6 +1,6 @@
   <div class="content">
     <div class="body-content">
-      <section class="popular-deals section bg-gray">
+      <section class="popular-deals section bg-gray" >
         <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -14,36 +14,25 @@
             <!-- offer 01 -->
             <?php foreach ($Venues as $row) { ?>
               <div class="col-lg-6">
-                    <!-- product card -->
-                      
-                          <div class="product-item bg-light" style="border-radius: 10px;">
-                            <div class="card" style="border-radius: 10px;">
-                              <table>
-                                <tr>
-                                    <td rowspan="5" width="200px"> 
-                                      <img style="height: 150px; width: 200px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;" src="<?php echo base_url(); ?>assets/images/venues/<?php echo $row->IMAGE; ?>" alt="" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="10px"> <?= $row->NAME; ?></td>
-                                </tr>
-                                  <tr>
-                                      <td height="10px">Rating</td>
-                                  </tr>
-                                <tr>
-                                    <td>Description</td>
-                                </tr>
-                                <tr>
-                                    <td height="10px"><button>Lihat Detail</button></td>
-                                </tr>
-                              </table>
-                            </div>
-                          </div>
-                      
-          </div>  
-          <?php } ?>
+                <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="<?php echo base_url(); ?>assets/images/venues/<?php echo $row->IMAGE; ?>" class="card-img img-responsive" alt="venues_image" style="width:100%; height:100%;object-fit:cover;">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title"><?= $row->NAME; ?></h5>
+                        <p class="card-text"><small class="text-muted">Rating <span style="color:orange;">4.5</span></small></p>
+                        <p class="card-text" style="display:block; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; max-height:100px;"><?= $row->DESCRIPTION->load(); ?></p>
+                        <a href="#"><button class="btn btn-primary btn-sm">Lihat detail</button></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php } ?>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
-</div>
+  </div>
