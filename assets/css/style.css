@@ -325,47 +325,15 @@ button {
 
 .section-title {
   position: relative;
-  margin-bottom: 75px;
-  text-align: center;
+  margin-bottom: 10px;
+  margin-top: -80px;
 }
 
-.section-title h2 {
-  font-size: 30px;
+.section-title h5 {
+  font-size: 20px;
   letter-spacing: 0.05em;
-  text-align: center;
 }
 
-.section-title h2:before {
-  content: " ";
-  display: block;
-  margin: 0 auto;
-  position: absolute;
-  bottom: -24px;
-  left: 0;
-  right: 0;
-  width: 127px;
-  height: 2px;
-  background-color: #e0e0e0;
-}
-
-.section-title h2:after {
-  content: " ";
-  display: block;
-  margin: 0 auto;
-  position: absolute;
-  bottom: -25px;
-  left: 0;
-  right: 0;
-  width: 40px;
-  height: 5px;
-  background-color: #5672f9;
-}
-
-.section-title p {
-  font-size: 18px;
-  line-height: 30px;
-  color: #848484;
-}
 
 .user-profile, .dashboard {
   padding-top: 50px;

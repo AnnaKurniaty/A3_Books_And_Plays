@@ -1,37 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Side Menu Dashboard</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styleDas.css" />
-  </head>
-  <body>
-    <div class="sidebar">
-      <div class="sidebar-user">
-        <div class="image">
-          <img src="<?php echo base_url(); ?>assets/images/users/<?php echo $this->session->IMAGE; ?>" alt="" />
+  <div class="content">
+    <div class="body-content">
+      <section class="popular-deals section bg-gray">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h5>List Venue</h5>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <!-- offer 01 -->
+            <?php foreach ($Venues as $row) { ?>
+              <div class="col-lg-6">
+                    <!-- product card -->
+                      
+                          <div class="product-item bg-light" style="border-radius: 10px;">
+                            <div class="card" style="border-radius: 10px;">
+                              <table>
+                                <tr>
+                                    <td rowspan="5" width="200px"> 
+                                      <img style="height: 150px; width: 200px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;" src="<?php echo base_url(); ?>assets/images/venues/<?php echo $row->IMAGE; ?>" alt="" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="10px"> <?= $row->NAME; ?></td>
+                                </tr>
+                                  <tr>
+                                      <td height="10px">Rating</td>
+                                  </tr>
+                                <tr>
+                                    <td>Description</td>
+                                </tr>
+                                <tr>
+                                    <td height="10px"><button>Lihat Detail</button></td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+                      
+          </div>  
+          <?php } ?>
         </div>
-        <h4 class="username"><?php echo $this->session->NAME; ?></h4>
       </div>
-      <a href="<?= base_url(); ?>index.php/C_customer" class="<?php if ($menu == "dasboard") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-desktop"></i><span>List Venue</span></a>
-      <a href="<?= base_url(); ?>index.php/C_customer/testing" class="<?php if ($menu == "testing") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-cogs"></i><span>List Field</span></a>
-      <a href="#"><i class="fas fa-table"></i><span>List My Bookings</span></a>
-      <a href="#"><i class="fas fa-th"></i><span>Enter Invitation Code</span></a>
-      <a href="<?= base_url(); ?>index.php/C_login/logout"><i class="fas fa-sliders-h"></i><span>LogOut</span></a>
+    </section>
     </div>
-	<div class="content">
-		<div class="grid">
-			<div class="grid-1">1</div>
-			<div class="grid-1">2</div>
-			<div class="grid-1">3</div>
-			<div class="grid-1">4</div>
-			<div class="grid-1">5</div>
-		</div>
-	</div>
-  </body>
-</html>
+</div>

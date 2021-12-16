@@ -16,7 +16,8 @@ class C_booking extends CI_Controller{
  
 	function index(){
         $data['FIELDS'] = $this->M_booking->getFields()->result();
-		$this->load->view('customer/AddBooking', $data);
+		$data['menu'] = "booking";
+		$this->im_render->main('customer/AddBooking', $data);
 	}
 
     function addBooking() {

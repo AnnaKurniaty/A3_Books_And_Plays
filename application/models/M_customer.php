@@ -6,4 +6,7 @@ class M_customer extends CI_Model
     return $this->db->query("SELECT * FROM VENUES");
   }
 
+  public function getDataReview() {
+    return $this->db->query("SELECT * FROM REVIEWS");
+  }
 }

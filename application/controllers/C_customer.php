@@ -17,10 +17,12 @@ class C_customer extends CI_Controller{
  
 	function index(){
         //$data = $this->M_customer->getDataVenues();
-        $data['Venues'] = $this->M_customer->getDataVenues()->result();
+        $data = new stdClass();
+        $data->Venues = $this->M_customer->getDataVenues()->result();
+        $data->Review = $this->M_customer->getDataReview()->result();
         //untuk menu active
-        $data['menu'] = "dasboard";
-		$this->load->view('customer/homepage', $data);
+        $data->menu = "dasboard";
+		$this->im_render->main_customer('customer/homepage', $data);
 	}
 
     function testing() {
