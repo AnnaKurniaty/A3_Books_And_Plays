@@ -1,30 +1,33 @@
-  <div class="content">
+<div class="content">
     <div class="body-content">
+        <div class="detail">
+            <h6>FIELDS INFO</h6>
+        </div>
       <section class="popular-deals section bg-gray" >
         <div class="container">
           <div class="row">
             <div class="col-md-12">
               <div class="section-title">
-                <h5>List Venue</h5>
+                <h5>List Booking in Fields</h5>
                 <hr>
               </div>
             </div>
           </div>
           <div class="row">
             <!-- offer 01 -->
-            <?php foreach ($Venues as $row) { ?>
+            <?php foreach ($Booking as $row) { ?>
               <div class="col-lg-6">
                 <div class="card mb-3" style="max-width: 540px;">
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                      <img src="<?php echo base_url(); ?>assets/images/venues/<?php echo $row->IMAGE; ?>" class="card-img img-responsive" alt="venues_image" style="width:100%; height:100%;object-fit:cover;">
+                      <img src="<?php echo base_url(); ?>assets/images/fields/<?php echo $row->IMAGE; ?>" class="card-img img-responsive" alt="venues_image" style="width:100%; height:100%;object-fit:cover;">
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title"><?= $row->NAME; ?></h5>
                         <p class="card-text"><small class="text-muted">Rating <span style="color:orange;">4.5</span></small></p>
                         <p class="card-text" style="display:block; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; max-height:100px;"><?= $row->DESCRIPTION->load(); ?></p>
-                        <a href="<?php echo base_url(); ?>index.php/C_customer/detailVenues/<?php echo $row->ID; ?>"><button class="btn btn-primary btn-sm">Lihat detail</button></a>
+                        <a href="<?php echo base_url(); ?>C_customer/detailVenues/<?php echo $row->ID; ?>"><button class="btn btn-primary btn-sm">Lihat detail</button></a>
                       </div>
                     </div>
                   </div>

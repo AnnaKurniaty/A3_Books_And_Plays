@@ -35,7 +35,7 @@ class M_register extends CI_Model
     {
         $post = $this->input->post();
         $this->NAME = $post["NAME"];
-        $this->EMAIL = $post["PASSWORD"];
+        $this->EMAIL = $post["EMAIL"];
         $this->PASSWORD = $post["PASSWORD"];
         $this->ROLES_ID = $post["ROLES_ID"];
         $this->IMAGE = $upload['file']['file_name'];

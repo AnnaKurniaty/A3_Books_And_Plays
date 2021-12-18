@@ -334,7 +334,6 @@ button {
   letter-spacing: 0.05em;
 }
 
-
 .user-profile, .dashboard {
   padding-top: 50px;
 }
@@ -2668,4 +2667,21 @@ form textarea {
   text-decoration: none;
 }
 
+.detail {
+  top: 30px;
+  left: 507px;
+  width: 1080px;
+  height: 200px;
+  background: #272C48 0% 0% no-repeat padding-box;
+  border-radius: 10px 10px 0px 0px;
+  opacity: 1;
+  }
+
+  .detail h6{
+    font-size: 30px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: white;
+    padding-top: 80px;
+  }
 /*# sourceMappingURL=maps/style.css.map */
