@@ -8,7 +8,7 @@
             <tbody>
               <tr>
                   <td>
-                    <h3 class="title"><?= $Address->NAME; ?></h3>
+                    <h3 class="title"><?= $Address['NAME']; ?></h3>
                   </td>
               </tr>
               <tr>
@@ -39,19 +39,19 @@
                 <td>
                   <span><strong>Address :</strong></span>
                 </td>
-                <td><?= $Address->ADDRESS; ?></td>
+                <td><?php echo $Address->ADDRESS; ?></td>
               </tr>
               <tr>
                 <td>
                   <span><strong>POST Code : </strong></span>
                 </td>
-                <td><?= $Address->POST_CODE; ?></td>
+                <td><?php echo $Address->POST_CODE; ?></td>
               </tr>
               <tr>
                 <td>
                   <span><strong>City :</strong></span>
                 </td>
-                <td><?= $Address->CITIES_NAME; ?></td>
+                <td><?php echo $Address->CITIES_NAME; ?></td>
               </tr>
               <tr>
                 <td>
