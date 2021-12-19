@@ -35,11 +35,23 @@ class C_customer extends CI_Controller{
 
     function detailVenues($id_venues) {
         $data = new stdClass();
-        $where = array('ID' => $id_venues);
-        $data->Fields = $this->M_customer->getFields($where);
-        $data->Address = $this->M_customer->getAddress($where);
+
+        $data->Venue = $this->M_customer->getVenueById($id_venues);
+        $data->Fields = $this->M_customer->getFieldInVenue($id_venues);
+        $data->Address = $this->M_customer->getAddress($id_venues);
+
         //untuk menu active
         $data->menu = "dasboard";
 		$this->im_render->main_customer('customer/detailVenues', $data); 
+    }
+
+    function detailField($id_field) {
+        $data = new stdClass();
+
+        $data->Field = $this->M_customer->getFieldById((int)$id_field);
+        $data->Booking = $this->M_customer->getBookingInField($id_field);
+
+        $data->menu = "dasboard";
+		$this->im_render->main_customer('customer/detailFields', $data); 
     }
 }

@@ -1,6 +1,6 @@
 <div class="content">
     <div class="body-content">
-        <div class="detail">
+        <div class="detail" style="width: 100%;">
             <h6>VENUE INFO</h6>
         </div>
         <div class="widget dashboard-container my-adslist">
@@ -8,61 +8,61 @@
             <tbody>
               <tr>
                   <td>
-                    <h3 class="title"><?= $Address['NAME']; ?></h3>
+                    <h3 class="title"><?= $Venue['NAME']; ?></h3>
                   </td>
               </tr>
               <tr>
                 <td>
-                  <span class="add-id"><strong>Phone :</strong></span>
+                  <span class="add-id"><strong>Phone : </strong></span>
                 </td>
-                <td></td>
+                <td><?= $Venue['PHONE']; ?></td>
               </tr>
               <tr>
                 <td>
                   <span><strong>Description : </strong></span>
                 </td>
-                <td></td>
+                <td><?= $Venue['DESCRIPTION']->load(); ?></td>
               </tr>
               <tr>
                 <td>
                   <span><strong>Open Time :</strong></span>
                 </td>
-                <td></td>
+                <td><?= $Venue['OPEN_TIME']; ?></td>
               </tr>
               <tr>
                 <td>
                   <span><strong>Close Time :</strong></span>
                 </td>
-                <td></td>
+                <td><?= $Venue['CLOSED_TIME']; ?></td>
               </tr>
               <tr>
                 <td>
                   <span><strong>Address :</strong></span>
                 </td>
-                <td><?php echo $Address->ADDRESS; ?></td>
+                <td>add</td>
               </tr>
               <tr>
                 <td>
                   <span><strong>POST Code : </strong></span>
                 </td>
-                <td><?php echo $Address->POST_CODE; ?></td>
+                <td>post code</td>
               </tr>
               <tr>
                 <td>
                   <span><strong>City :</strong></span>
                 </td>
-                <td><?php echo $Address->CITIES_NAME; ?></td>
+                <td>city name</td>
               </tr>
               <tr>
                 <td>
-                  <span><strong>Province :</strong></span>
+                  <span><strong>Province</strong></span>
                 </td>
-                <td></td>
+                <td>Province</td>
               </tr>  
             </tbody>
         </table>
         </div>
-      <section class="popular-deals section bg-gray" >
+        <section class="popular-deals section bg-gray" >
         <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -75,23 +75,25 @@
           <div class="row">
             <!-- offer 01 -->
             <?php foreach ($Fields as $row) { ?>
-              <div class="col-lg-6">
+              <?php if($row['IS_ACTIVE'] == '1') : ?>
+                <div class="col-lg-6">
                 <div class="card mb-3" style="max-width: 540px;">
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                      <img src="<?php echo base_url(); ?>assets/images/fields/<?php echo $row->IMAGE; ?>" class="card-img img-responsive" alt="venues_image" style="width:100%; height:100%;object-fit:cover;">
+                      <img src="<?php echo base_url(); ?>assets/images/fields/<?php echo $row['IMAGE']; ?>" class="card-img img-responsive" alt="venues_image" style="width:100%; height:100%;object-fit:cover;">
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
-                        <h5 class="card-title"><?= $row->NAME; ?></h5>
+                        <h5 class="card-title"><?= $row['NAME']; ?></h5>
                         <p class="card-text"><small class="text-muted">Rating <span style="color:orange;">4.5</span></small></p>
-                        <p class="card-text" style="display:block; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; max-height:100px;"><?= $row->DESCRIPTION->load(); ?></p>
-                        <a href="<?php echo base_url(); ?>C_customer/detailVenues/<?php echo $row->ID; ?>"><button class="btn btn-primary btn-sm">Lihat detail</button></a>
+                        <p class="card-text" style="display:block; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; max-height:100px;"><?= $row['DESCRIPTION']; ?></p>
+                        <a href="<?php echo base_url(); ?>index.php/C_customer/detailField/<?php echo $row['ID']; ?>"><button class="btn btn-primary btn-sm">Lihat detail</button></a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <?php endif ?>
             <?php } ?>
           </div>
         </div>
