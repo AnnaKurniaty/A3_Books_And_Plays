@@ -33,6 +33,9 @@
           <div class="col-md-12">
             <div class="section-title">
               <h5>List Booking in Fields</h5>
+              <a href="<?php echo base_url();?>index.php/C_booking/fieldBooking/<?= $Field['ID']; ?>">
+                <button class="btn-sm btn-primary" style="border: none;">Tambah Booking</button>
+              </a>
               <hr>
             </div>
           </div>
@@ -54,7 +57,7 @@
                       <p class="card-text"><?= $row['INVITATION_CODE']; ?></p>
                     </div>
                     <div class="col" style="padding:20px; box-sizing:auto;">
-                      <a href="<?php echo base_url(); ?>C_customer/detailVenues/<?php echo $row['ID']; ?>"><button class="btn-primary btn-sm">Lihat detail</button></a>
+                      <a href="<?php echo base_url(); ?>index.php/C_customer/detailBooking/<?php echo $row['ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Lihat detail</button></a>
                     </div>
                   </div>
                 </div>

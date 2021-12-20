@@ -54,4 +54,25 @@ class C_customer extends CI_Controller{
         $data->menu = "dasboard";
 		$this->im_render->main_customer('customer/detailFields', $data); 
     }
+
+    function detailBooking($id_booking) {
+        $data = new stdClass();
+
+        $data->Booking = $this->M_customer->getBookingById($id_booking);
+        $data->Player = $this->M_customer->getListPlayerInBooking($id_booking);
+        $data->JoinStatus = $this->M_customer->isJoinInBooking($id_booking);
+
+        $data->menu = "dasboard";
+		$this->im_render->main_customer('customer/detailBooking', $data); 
+    }
+
+    function joinBooking($id_booking) {
+        $this->M_customer->joinBooking($id_booking);
+        redirect(base_url("index.php/C_customer/detailBooking/" . $id_booking));
+    }
+
+    function unjoinBooking($id_booking) {
+        $this->M_customer->unjoinBooking($id_booking);
+        redirect(base_url("index.php/C_customer/detailBooking/" . $id_booking));
+    }
 }

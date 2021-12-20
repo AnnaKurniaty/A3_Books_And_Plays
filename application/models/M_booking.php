@@ -1,10 +1,11 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_booking extends CI_Model
-{ 
+{
     private $table = "BOOKINGS";
 
-    public function getDataBooking() {
+    public function getDataBooking()
+    {
         return $this->db->query("SELECT * FROM VENUES");
     }
 
@@ -22,11 +23,13 @@ class M_booking extends CI_Model
     //     return $this->db->insert($this->table);
     // }
 
-    public function getFields(){
+    public function getFields()
+    {
         return $this->db->query("SELECT * FROM FIELDS");
     }
 
-    public function get_insertBooking(){
+    public function get_insertBooking()
+    {
         // $filter = 'date("yyyy/mm/dd hh24:mi", strtotime)';
         // $this->db->query('call INSERTBOOKING()');
 
@@ -41,5 +44,20 @@ class M_booking extends CI_Model
         // foreach($params as $p)
         // oci_bind_by_name($stmt, $p['name'], $p['value'], $p['length']);
         // $r = ociexecute($stmt);
+    }
+
+    public function addBooking()
+    {
+        $start_date = date('Y/m/d H:i', strtotime($_POST['PlayDateStart']));
+        $duration = (int)$_POST['Duration'];
+        $field_id = (int)$_POST['FieldId'];
+        $user_id = (int)$_POST['UserId'];
+        $stmt = oci_parse($this->db->conn_id, 'BEGIN insertBooking(:start_date, :duration, :field_id, :user_id, :invitation_code); END;');
+        oci_bind_by_name($stmt, ':start_date', $start_date, 255, SQLT_CHR);
+        oci_bind_by_name($stmt, ':duration', $duration, 255, SQLT_INT);
+        oci_bind_by_name($stmt, ':field_id', $field_id, 255, SQLT_INT);
+        oci_bind_by_name($stmt, ':user_id', $user_id, 255, SQLT_INT);
+        oci_bind_by_name($stmt, ':invitation_code', $_POST['InvitationCode'], 255, SQLT_CHR);
+        $result = oci_execute($stmt);
     }
 }

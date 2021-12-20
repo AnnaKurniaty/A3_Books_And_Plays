@@ -56,4 +56,49 @@ class M_customer extends CI_Model
     }
     return $result;
   }
+
+  public function getBookingById($booking_id) {
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN getBookingById(:param); END;');
+    oci_bind_by_name($stmt, ':param', $booking_id);
+    oci_execute($stmt);
+    $result = oci_fetch_assoc($stmt);
+    return $result;
+  }
+
+  public function getListPlayerInBooking($booking_id) {
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN getListPlayerInBooking(:param); END;');
+    oci_bind_by_name($stmt, ':param', $booking_id);
+    oci_execute($stmt);
+    $result = [];
+    while($temp = oci_fetch_assoc($stmt)) {
+      $result[] = $temp;
+    }
+    return $result;
+  }
+
+  public function isJoinInBooking($booking_id) {
+    $user_id = (int)$_SESSION['ID'];
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN :ret := isJoin(:user_id, :booking_id); END;');
+    oci_bind_by_name($stmt, ':ret', $result, 255, SQLT_INT);
+    oci_bind_by_name($stmt, ':user_id', $user_id);
+    oci_bind_by_name($stmt, ':booking_id', $booking_id);
+    oci_execute($stmt);
+    return $result;
+  }
+
+  public function joinBooking($booking_id) {
+    $user_id = (int)$_SESSION['ID'];
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN joinBooking(:user_id, :booking_id); END;');
+    oci_bind_by_name($stmt, ':user_id', $user_id);
+    oci_bind_by_name($stmt, ':booking_id', $booking_id);
+    oci_execute($stmt);
+  }
+
+  public function unjoinBooking($booking_id) {
+    $user_id = (int)$_SESSION['ID'];
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN unjoinBooking(:user_id, :booking_id); END;');
+    oci_bind_by_name($stmt, ':user_id', $user_id);
+    oci_bind_by_name($stmt, ':booking_id', $booking_id);
+    oci_execute($stmt);
+  }
 }

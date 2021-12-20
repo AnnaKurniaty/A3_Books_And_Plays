@@ -15,14 +15,21 @@ class C_booking extends CI_Controller{
     }
  
 	function index(){
-        $data['FIELDS'] = $this->M_booking->getFields()->result();
-		$data['menu'] = "booking";
+        $data['menu'] = "booking";
 		$this->im_render->main('customer/AddBooking', $data);
 	}
 
+    function fieldBooking($field_id) {
+        $data = new stdClass();
+
+        $data->menu = "booking";
+        $data->Field = $field_id;
+		$this->im_render->main_customer('customer/AddBooking', $data);
+    }
+
     function addBooking() {
-        // $this->M_booking->insetBooking();
-        $this->M_booking->get_insertBooking();
+        $this->M_booking->addBooking();
+        redirect(base_url("index.php/C_customer/detailField/" . $_POST['FieldId']));
     }
 
 }
