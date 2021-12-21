@@ -13,52 +13,39 @@
               </tr>
               <tr>
                 <td>
-                  <span class="add-id"><strong>Phone : </strong></span>
+                  <span class="add-id"><strong>Phone</strong></span>
                 </td>
+                <td>:</td>
                 <td><?= $Venue['PHONE']; ?></td>
               </tr>
               <tr>
                 <td>
-                  <span><strong>Description : </strong></span>
+                  <span><strong>Description</strong></span>
                 </td>
+                <td>:</td>
                 <td><?= $Venue['DESCRIPTION']->load(); ?></td>
               </tr>
               <tr>
                 <td>
-                  <span><strong>Open Time :</strong></span>
+                  <span><strong>Open Time</strong></span>
                 </td>
+                <td>:</td>
                 <td><?= $Venue['OPEN_TIME']; ?></td>
               </tr>
               <tr>
                 <td>
-                  <span><strong>Close Time :</strong></span>
+                  <span><strong>Close Time</strong></span>
                 </td>
+                <td>:</td>
                 <td><?= $Venue['CLOSED_TIME']; ?></td>
               </tr>
               <tr>
                 <td>
-                  <span><strong>Address :</strong></span>
+                  <span><strong>Address</strong></span>
                 </td>
-                <td>add</td>
+                <td>:</td>
+                <td><?= $Address?></td>
               </tr>
-              <tr>
-                <td>
-                  <span><strong>POST Code : </strong></span>
-                </td>
-                <td>post code</td>
-              </tr>
-              <tr>
-                <td>
-                  <span><strong>City :</strong></span>
-                </td>
-                <td>city name</td>
-              </tr>
-              <tr>
-                <td>
-                  <span><strong>Province</strong></span>
-                </td>
-                <td>Province</td>
-              </tr>  
             </tbody>
         </table>
         </div>

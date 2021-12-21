@@ -51,7 +51,7 @@ class C_customer extends CI_Controller{
         $data->Field = $this->M_customer->getFieldById((int)$id_field);
         $data->Booking = $this->M_customer->getBookingInField($id_field);
 
-        $data->menu = "dasboard";
+        $data->menu = "fields";
 		$this->im_render->main_customer('customer/detailFields', $data); 
     }
 
@@ -62,7 +62,7 @@ class C_customer extends CI_Controller{
         $data->Player = $this->M_customer->getListPlayerInBooking($id_booking);
         $data->JoinStatus = $this->M_customer->isJoinInBooking($id_booking);
 
-        $data->menu = "dasboard";
+        $data->menu = "booking";
 		$this->im_render->main_customer('customer/detailBooking', $data); 
     }
 
@@ -75,4 +75,20 @@ class C_customer extends CI_Controller{
         $this->M_customer->unjoinBooking($id_booking);
         redirect(base_url("index.php/C_customer/detailBooking/" . $id_booking));
     }
+
+    function viewBooking() {
+        $data = new stdClass();
+        $user_id = $_SESSION['ID'];
+        $data->Booking = $this->M_customer->getListMyBooking($user_id);
+        $data->menu = "booking";
+		$this->im_render->main_customer('customer/listBooking', $data);
+    }
+
+    // function review() {
+    //     $data = new stdClass();
+    //     $user_id = $_SESSION['ID'];
+    //     $data->Booking = $this->M_customer->getListMyBooking($user_id);
+    //     $data->menu = "booking";
+	// 	$this->im_render->main_customer('customer/listBooking', $data);
+    // }
 }

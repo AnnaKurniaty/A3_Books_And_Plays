@@ -24,6 +24,16 @@ class Im_render extends CI_Controller{
 			$this->CI->load->view('customer/main_customer');
 		}
 	}
+
+	function main_owner($view_page, $data = NULL){
+		$data->view_page = $view_page;
+		if($data != NULL){
+			$this->CI->load->view('owner/main_owner', $data);	
+		}
+		else{
+			$this->CI->load->view('owner/main_owner');
+		}
+	}
 	
 	function main_form($view_page, $data = NULL){
 		$data['view_page'] = $view_page;

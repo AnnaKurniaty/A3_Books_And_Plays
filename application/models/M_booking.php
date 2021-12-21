@@ -52,12 +52,11 @@ class M_booking extends CI_Model
         $duration = (int)$_POST['Duration'];
         $field_id = (int)$_POST['FieldId'];
         $user_id = (int)$_POST['UserId'];
-        $stmt = oci_parse($this->db->conn_id, 'BEGIN insertBooking(:start_date, :duration, :field_id, :user_id, :invitation_code); END;');
+        $stmt = oci_parse($this->db->conn_id, "BEGIN insertBooking(TO_DATE(:start_date, 'yyyy/mm/dd hh24:mi'), :duration, :field_id, :user_id); END;");
         oci_bind_by_name($stmt, ':start_date', $start_date, 255, SQLT_CHR);
         oci_bind_by_name($stmt, ':duration', $duration, 255, SQLT_INT);
         oci_bind_by_name($stmt, ':field_id', $field_id, 255, SQLT_INT);
         oci_bind_by_name($stmt, ':user_id', $user_id, 255, SQLT_INT);
-        oci_bind_by_name($stmt, ':invitation_code', $_POST['InvitationCode'], 255, SQLT_CHR);
         $result = oci_execute($stmt);
 
         if (!$result) {

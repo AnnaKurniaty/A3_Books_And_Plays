@@ -65,6 +65,17 @@ class M_customer extends CI_Model
     return $result;
   }
 
+  public function getListMyBooking($user_id) {
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN getListMyBookings(:param); END;');
+    oci_bind_by_name($stmt, ':param', $user_id);
+    oci_execute($stmt);
+    $result = [];
+    while($temp = oci_fetch_assoc($stmt)) {
+      $result[] = $temp;
+    }
+    return $result;
+  }
+
   public function getListPlayerInBooking($booking_id) {
     $stmt = oci_parse($this->db->conn_id, 'BEGIN getListPlayerInBooking(:param); END;');
     oci_bind_by_name($stmt, ':param', $booking_id);
