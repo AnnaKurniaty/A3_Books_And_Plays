@@ -86,14 +86,12 @@ class C_customer extends CI_Controller{
 
     function viewReview($booking_id) {
         $data = new stdClass();
-        $user_id = $_SESSION['ID'];
-        $Bookings['status'] = $this->M_customer->isAlreadyReview($user_id, $booking_id);
+        $status = $this->M_customer->isAlreadyReview($booking_id);
         $data->Review = $this->M_customer->getReview($booking_id);
         $data->menu = "booking";
         $data->Booking = $booking_id;
 
-        $Bookings = $this->M_customer->isAlreadyReview($user_id, $booking_id);
-        if ($Bookings == 1){
+        if ($status == 1){
             $this->im_render->main_customer('customer/viewReview', $data);
         }else{
             $this->im_render->main_customer('customer/addReview', $data);

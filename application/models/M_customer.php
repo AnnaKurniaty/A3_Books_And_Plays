@@ -141,6 +141,10 @@ class M_customer extends CI_Model
     oci_execute($stmt);
     return $result;
   }
+
+  public function test($booking_id) {
+    var_dump($booking_id);
+  }
   public function addReview()
     {
       $post = $this->input->post();
