@@ -32,6 +32,6 @@
       <a href="<?= base_url(); ?>index.php/C_customer" class="<?php if ($menu == "dasboard") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-desktop"></i><span>List Venue</span></a>
       <a href="<?= base_url(); ?>index.php/C_customer/viewFields" class="<?php if ($menu == "fields") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-cogs"></i><span>List Field</span></a>
       <a href="<?= base_url(); ?>index.php/C_customer/viewBooking" <?= $_SESSION['ID'] ?> class="<?php if ($menu == "booking") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-table"></i><span>List My Bookings</span></a>
-      <a href="<?= base_url(); ?>index.php/C_customer//viewInvitationCode" class="<?php if ($menu == "invitationCode") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-th"></i><span>Enter Invitation Code</span></a>
+      <a href="<?= base_url(); ?>index.php/C_customer/invitationCode" class="<?php if ($menu == "invitationCode") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-th"></i><span>Enter Invitation Code</span></a>
       <a href="<?= base_url(); ?>index.php/C_login/logout"><i class="fas fa-sliders-h"></i><span>LogOut</span></a>
     </div>

@@ -14,6 +14,17 @@ class M_customer extends CI_Model
     return $this->db->query("SELECT * FROM FIELDS");
   }
 
+  public function getReview($bookings_id){
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN getReviewByIdBooking(:param); END;');
+    oci_bind_by_name($stmt, ':param', $bookings_id);
+    oci_execute($stmt);
+    $result = [];
+    while($temp = oci_fetch_assoc($stmt)) {
+      $result[] = $temp;
+    }
+    return $result;
+  }	
+
   public function getVenueById($venue_id) {
     $stmt = oci_parse($this->db->conn_id, 'BEGIN getVenueById(:param); END;');
     oci_bind_by_name($stmt, ':param', $venue_id);
@@ -113,31 +124,30 @@ class M_customer extends CI_Model
     oci_execute($stmt);
   }
 
+  public function getBookingByInvitationCode() {
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN  getBookingByInvitationCode(:param); END;');
+    oci_bind_by_name($stmt, ':param', 'ASXAWRQSDA');
+    oci_execute($stmt);
+    $result = oci_fetch_assoc($stmt);
+    return $result;
+  }
+
+  public function isAlreadyReview($booking_id) {
+    $user_id = (int)$_SESSION['ID'];
+    $stmt = oci_parse($this->db->conn_id, 'BEGIN :ret := isAlreadyReview(:user_id, :booking_id); END;');
+    oci_bind_by_name($stmt, ':ret', $result, 255, SQLT_INT);
+    oci_bind_by_name($stmt, ':user_id', $user_id);
+    oci_bind_by_name($stmt, ':booking_id', $booking_id);
+    oci_execute($stmt);
+    return $result;
+  }
   public function addReview()
     {
-        $start = (float)$_POST['start'];
-        $review_text = (int)$_POST['review_text'];
-        $booking_id = (int)$_POST['FieldId'];
-        $user_id = (int)$_POST['UserId'];
-        $stmt = oci_parse($this->db->conn_id, "BEGIN insertReview(]:start, :review_text, :booking_id, :user_id); END;");
-        oci_bind_by_name($stmt, ':start', $start, 255, SQLT_CHR);
-        oci_bind_by_name($stmt, ':review_text', $review_text, 255, SQLT_INT);
-        oci_bind_by_name($stmt, ':booking_id', $booking_id, 255, SQLT_INT);
-        oci_bind_by_name($stmt, ':user_id', $user_id, 255, SQLT_INT);
-        $result = oci_execute($stmt);
-
-        if (!$result) {
-            $e = oci_error($stmt);
-            // mengambil hanya error message
-            $parse1 = explode('ORA-', $e['message']);
-            $parse2 = explode(':', $parse1[1]); // error message code
-            $message = "Tambah Review Gagal : " . $parse2[1]; // error message text
-
-            $_SESSION['message'] = $message;
-            $_SESSION['type_message'] = 'alert-danger';
-        } else {
-            $_SESSION['message'] = 'Booking Berhasil ditambahkan';
-            $_SESSION['type_message'] = 'alert-success';
-        }
+      $post = $this->input->post();
+      $this->NAME = $post["NAME"];
+      $this->EMAIL = $post["EMAIL"];
+      $this->PASSWORD = $post["PASSWORD"];
+      $this->ROLES_ID = $post["ROLES_ID"];
+      return $this->db->insert($this->_table, $this);
     }
 }
