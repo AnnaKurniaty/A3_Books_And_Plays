@@ -84,11 +84,8 @@ class C_customer extends CI_Controller{
 		$this->im_render->main_customer('customer/listBooking', $data);
     }
 
-    // function review() {
-    //     $data = new stdClass();
-    //     $user_id = $_SESSION['ID'];
-    //     $data->Booking = $this->M_customer->getListMyBooking($user_id);
-    //     $data->menu = "booking";
-	// 	$this->im_render->main_customer('customer/listBooking', $data);
-    // }
+    function review() {
+        $this->M_customer->addReview();
+        redirect(base_url("index.php/C_customer/viewBooking/" . $_POST['Booking_Id']));
+    }
 }

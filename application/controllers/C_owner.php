@@ -21,16 +21,23 @@ class C_owner extends CI_Controller{
         $data->Venues = $this->M_owner->getAllMyVenues($user_id);
         //untuk menu active
         $data->menu = "venue";
-		$this->im_render->main_owner('owner/fields', $data);
+		$this->im_render->main_owner('owner/listVenues', $data);
 	}
 
-    function fields($id_venues){
+    function viewFields(){
         $data = new stdClass();
-        $data->Venue = $this->M_owner->getVenueById($id_venues);
-        $data->Fields = $this->M_owner->getFieldInVenue($id_venues);
-        $data->Address = $this->M_owner->getAddress($id_venues);
+        $user_id = $_SESSION['ID'];
+        $data->Fields = $this->M_owner->getAllMyFIelds($user_id);
         //untuk menu active
         $data->menu = "fields";
-		$this->im_render->main_owner('owner/fields', $data);
+		$this->im_render->main_owner('owner/listfields', $data);
+	}
+
+    function viewBooking() {
+        $data = new stdClass();
+        $user_id = $_SESSION['ID'];
+        $data->Booking = $this->M_owner->getListMyBooking($user_id);
+        $data->menu = "booking";
+		$this->im_render->main_owner('owner/listBooking', $data);
     }
 }

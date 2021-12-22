@@ -23,7 +23,7 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title"><?= $row->NAME; ?></h5>
-                        <p class="card-text"><small class="text-muted">Rating <span style="color:orange;">4.5</span></small></p>
+                        <p class="card-text"><small class="text-muted">Rating <span style="color:orange;"><?= $row->RATING; ?></span></small></p>
                         <p class="card-text" style="display:block; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; max-height:100px;"><?= $row->DESCRIPTION->load(); ?></p>
                         <a href="<?php echo base_url(); ?>index.php/C_customer/detailField/<?php echo $row->ID; ?>"><button class="btn-sm btn-primary" style="border: none;">Lihat detail</button></a>
                       </div>

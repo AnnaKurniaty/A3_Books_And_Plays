@@ -29,7 +29,7 @@
         </div>
         <h4 class="username"><?php echo $this->session->NAME; ?></h4>
       </div>
-      <a href="<?= base_url(); ?>index.php/C_owner/viewFields" class="<?php if ($menu == "venue") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-desktop"></i><span>Venue</span></a>
+      <a href="<?= base_url(); ?>index.php/C_owner" class="<?php if ($menu == "venue") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-desktop"></i><span>Venue</span></a>
       <a href="<?= base_url(); ?>index.php/C_owner/viewFields" class="<?php if ($menu == "fields") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-cogs"></i><span>List Field</span></a>
       <a href="<?= base_url(); ?>index.php/C_owner/viewBooking" class="<?php if ($menu == "booking") { echo "active"; }else{ echo "";}; ?>"><i class="fas fa-table"></i><span>List Bookings</span></a>
       <a href="<?= base_url(); ?>index.php/C_login/logout"><i class="fas fa-sliders-h"></i><span>LogOut</span></a>
