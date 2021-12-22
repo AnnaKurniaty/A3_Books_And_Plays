@@ -142,16 +142,9 @@ class M_customer extends CI_Model
     return $result;
   }
 
-  public function test($booking_id) {
-    var_dump($booking_id);
-  }
-  public function addReview()
-    {
-      $post = $this->input->post();
-      $this->NAME = $post["NAME"];
-      $this->EMAIL = $post["EMAIL"];
-      $this->PASSWORD = $post["PASSWORD"];
-      $this->ROLES_ID = $post["ROLES_ID"];
-      return $this->db->insert($this->_table, $this);
-    }
+  function addReview($data)
+		{
+			$tambah = $this->db->insert('REVIEWS',$data);
+			return $tambah;
+		}
 }

@@ -104,4 +104,23 @@ class C_customer extends CI_Controller{
         $data->menu = "invitationCode";
         $this->im_render->main_customer('customer/invitationCode', $data);
     }
+
+    public function insertReview()
+	{
+		$Userid = $this->input->post('UsersId');
+		$dateReview = date('d/M/Y');
+		$stars = $this->input->post('Stars');
+		$text = $this->input->post('Text');
+		$bookingId = $this->input->post('BookingId');
+			$data = array(
+				'REVIEW_DATE' => $dateReview,
+				'STARS' => $stars,
+				'TEXT' => $text,
+				'BOOKINGS_ID' => $bookingId,
+                'USERS_ID' => $Userid,
+			);
+
+		$this->M_customer->addReview($data);
+		redirect(base_url("index.php/C_customer/viewReview/" . $data));
+	}
 }
