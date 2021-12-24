@@ -19,8 +19,6 @@
                                   >
                                   <h6 class="font-weight-bold pt-4 pb-1">Duration:</h6>
                                   <input type="number" name="Duration" class="border w-100 p-2 bg-white text-capitalize" placeholder="Duration" min="1" required>
-                                  <h6 class="font-weight-bold pt-4 pb-1">Invitation Code</h6>
-                                  <input type="text" name="InvitationCode" class="border w-100 py-2 w-100 price" placeholder="Invitation Code" required>
                                   <input type="number" name="FieldId" value="<?= $Field ?>" hidden>
                                   <input type="number" name="UserId" value="<?= $_SESSION['ID'] ?>" hidden>
                               </div>

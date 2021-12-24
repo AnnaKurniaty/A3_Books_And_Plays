@@ -72,8 +72,13 @@ class C_customer extends CI_Controller{
     }
 
     function unjoinBooking($id_booking) {
-        $this->M_customer->unjoinBooking($id_booking);
+        $user_id = (int) $_SESSION['ID'];
+        $this->M_customer->unjoinBooking($user_id, $id_booking);
         redirect(base_url("index.php/C_customer/detailBooking/" . $id_booking));
+    }
+
+    function unjoinUserFromBooking($user_id, $booking_id) {
+        
     }
 
     function viewBooking() {
@@ -100,9 +105,17 @@ class C_customer extends CI_Controller{
 
     function invitationCode() {
         $data = new stdClass();
-        $data->Booking = $this->M_customer->getBookingByInvitationCode('ASXAWRQSDA');
         $data->menu = "invitationCode";
         $this->im_render->main_customer('customer/invitationCode', $data);
+    }
+
+    function findBookingWithInvitationCode() {
+        $data = $this->M_customer->getBookingByInvitationCode($_POST['InvitationCode']);
+        if($data == false)
+        {
+            redirect(base_url("index.php/C_customer/invitationCode"));
+        }
+        redirect(base_url("index.php/C_customer/detailBooking/" . $data['ID']));
     }
 
     public function insertReview()

@@ -13,6 +13,12 @@
           </tr>
           <tr>
             <td>
+              <span class="add-id"><strong>Rating : </strong></span>
+            </td>
+            <td><?= $Field['RATING']; ?></td>
+          </tr>
+          <tr>
+            <td>
               <span class="add-id"><strong>Price : </strong></span>
             </td>
             <td>Rp.<?= $Field['PRICE']; ?></td>

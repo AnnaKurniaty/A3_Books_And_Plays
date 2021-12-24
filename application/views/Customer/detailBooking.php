@@ -1,3 +1,5 @@
+<?php $isOwnerBooking = ($Booking['USERS_ID'] == $_SESSION['ID']) ? true : false ?>
+<?php $isGameOver = ($Booking['END_DATE']) < date('Y/m/d H:i') ? true : false?>
 <div class="content">
   <div class="body-content">
     <div class="detail" style="width: 100%;">
@@ -45,9 +47,11 @@
           <div class="col-md-12">
             <div class="section-title">
               <h5>List Player in Booking</h5>
+              <?php if(!$isOwnerBooking && !$isGameOver) : ?>
               <a href="<?php echo base_url(); ?>index.php/C_customer/<?= ($JoinStatus == 0) ? 'joinBooking' : 'unjoinBooking'; ?>/<?php echo $Booking['ID']; ?>">
                 <button class="btn btn-primary"><?= ($JoinStatus == 0) ? 'Join' : 'Unjoin'; ?></button>
               </a>
+              <?php endif; ?>
               <hr>
             </div>
           </div>
@@ -59,7 +63,12 @@
               <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                   <div class="col" style="padding:20px; box-sizing:auto;">
-                    <p class="card-text"><?= $row['USER_NAME']; ?></p>
+                    <p class="card-text" style="display: inline; margin-right:50px;"><?= $row['USER_NAME']; ?></p>
+                    <?php if($isOwnerBooking && $row['USERS_ID'] != $_SESSION['ID'] && !$isGameOver): ?>
+                      <a href="<?php echo base_url(); ?>index.php/C_customer/unjoinBooking/<?= $row['USERS_ID']; ?>">
+                        <button class="btn-danger" style="display: inline; border-radius:10%;">Remove</button>
+                      </a>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>

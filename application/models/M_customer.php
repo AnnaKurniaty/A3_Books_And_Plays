@@ -116,7 +116,7 @@ class M_customer extends CI_Model
     oci_execute($stmt);
   }
 
-  public function unjoinBooking($booking_id) {
+  public function unjoinBooking($user_id, $booking_id) {
     $user_id = (int)$_SESSION['ID'];
     $stmt = oci_parse($this->db->conn_id, 'BEGIN unjoinBooking(:user_id, :booking_id); END;');
     oci_bind_by_name($stmt, ':user_id', $user_id);
@@ -124,9 +124,9 @@ class M_customer extends CI_Model
     oci_execute($stmt);
   }
 
-  public function getBookingByInvitationCode() {
+  public function getBookingByInvitationCode($invitation_code) {
     $stmt = oci_parse($this->db->conn_id, 'BEGIN  getBookingByInvitationCode(:param); END;');
-    oci_bind_by_name($stmt, ':param', 'ASXAWRQSDA');
+    oci_bind_by_name($stmt, ':param', $invitation_code);
     oci_execute($stmt);
     $result = oci_fetch_assoc($stmt);
     return $result;
