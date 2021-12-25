@@ -30,6 +30,7 @@
                         <p class="card-text" style="display:block; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; max-height:100px;"><?= $row['DESCRIPTION']->load(); ?></p>
                         <!-- ini belum hrefnya benerin -->
                         <a href="<?php echo base_url(); ?>index.php/C_owner/detailField/<?php echo $row['ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Lihat detail</button></a>
+                        <a href="<?php echo base_url(); ?>index.php/C_owner/deleteField/<?php echo $row['ID']; ?>"><button class="btn-sm btn-danger" style="border: none;">Delete Field</button></a>
                       </div>
                     </div>
                   </div>

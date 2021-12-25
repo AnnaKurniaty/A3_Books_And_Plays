@@ -13,23 +13,6 @@ class C_register extends CI_Controller{
         $this->load->view("register", $data);
     }
 
-    public function upload_image(){
-        $config['upload_path'] = './assets/images/users/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size']  = '2048';
-        $config['remove_space'] = TRUE;
-      
-        $this->load->library('upload', $config);
- 
-		if ( ! $this->upload->do_upload('berkas')){
-			$error = array('error' => $this->upload->display_errors());
-			$this->load->view('registrasi', $error);
-		}else{
-			$data = array('upload_data' => $this->upload->data());
-			$this->load->view('login');
-		}
-    }
-
     public function add()
     {
         $upload = $this->M_register->uploadGambar();

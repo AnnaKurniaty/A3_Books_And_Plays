@@ -6,7 +6,7 @@
           <div class="col-md-12">
             <div class="section-title">
               <h5>List My Venues</h5>
-              <a href="<?php echo base_url(); ?>index.php/C_owner/addVenues/<?php echo $_SESSION['ID']; ?>">
+              <a href="<?php echo base_url(); ?>index.php/C_owner/insertVenue/<?php echo $_SESSION['ID']; ?>">
                 <button class="btn-sm btn-primary" style="border: none;">Tambah Venue</button>
               </a>
               <hr>
@@ -28,6 +28,7 @@
                         <p class="card-text" style="display:block; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; max-height:100px;"><?= $row['DESCRIPTION']->load(); ?></p>
                         <!-- ini benerin hrefnya -->
                         <a href="<?php echo base_url(); ?>index.php/C_owner/detailVenues/<?php echo $row['ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Lihat detail</button></a>
+                        <a href="<?php echo base_url(); ?>index.php/C_owner/deleteVenue/<?php echo $row['ID']; ?>"><button class="btn-sm btn-danger" style="border: none;">Delete Venue</button></a>
                       </div>
                     </div>
                   </div>

@@ -25,30 +25,30 @@
                   <div class="col-md-2">
                     <img src="<?php echo base_url(); ?>assets/images/fields/<?php echo $row['FIELD_IMAGE']; ?>" class="card-img img-responsive" alt="venues_image" style="width:100%; height:100%;object-fit:cover;">
                   </div>
-                  <div class="col" style="padding:20px; box-sizing:auto; margin-top:15px;text-align:center;">
+                  <div class="col" style="padding:10px; box-sizing:auto; margin-top:20px; text-align:center;">
                     <p class="card-text"><?= $row['FIELD_NAME']; ?></p>
                   </div>
-                  <div class="col" style="padding:20px; box-sizing:auto; margin-top:15px;text-align:center;">
+                  <div class="col" style="padding:10px; box-sizing:auto; margin-top:20px; text-align:center;">
                     <p class="card-text"><?= $row['START_DATE']; ?></p>
                   </div>
-                  <div class="col" style="padding:20px; box-sizing:auto; margin-top:15px;text-align:center;">
+                  <div class="col" style="padding:10px; box-sizing:auto; margin-top:20px; text-align:center;">
                     <p class="card-text"><?= $row['START_DATE']; ?></p>
                   </div>
-                  <div class="col" style="padding:20px; box-sizing:auto; margin-top:15px;text-align:center;">
+                  <div class="col" style="padding:10px; box-sizing:auto; margin-top:20px; text-align:center;">
                     <p class="card-text"><?= $row['END_DATE']; ?></p>
                   </div>
-                  <div class="col" style="padding:20px; box-sizing:auto; margin-top:20px; text-align:center;">
+                  <div class="col" style="padding:10px; box-sizing:auto; margin-top:28px; margin-right:-20px; margin-left:-20px; text-align:center;">
                     <p class="card-text"><?= $row['DURATION']; ?></p>
                   </div>
-                  <div class="col" style="padding:20px; box-sizing:auto; margin-top:20px;text-align:center;">
+                  <div class="col" style="padding:10px; box-sizing:auto; margin-top:28px; text-align:center;">
                     <p class="card-text"><?= $row['BOOKING_STATUS']; ?></p>
                   </div>
                   <!-- ini hrefnya benerin -->
-                  <div class="col" style="padding:20px; box-sizing:auto; margin-top:15px;">
+                  <div class="col" style="padding:10px; box-sizing:auto; margin-top:25px;">
                     <a href="<?php echo base_url(); ?>index.php/C_owner/detailBooking/<?php echo $row['ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Lihat detail</button></a>
                   </div>
-                  <div class="col" style="padding:20px; box-sizing:auto; margin-top:15px;">
-                    <a href="<?php echo base_url(); ?>index.php/C_owner/deleteBooking/<?php echo $row['ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Review</button></a>
+                  <div class="col" style="padding:10px; box-sizing:auto; margin-top:25px;">
+                    <a href="<?php echo base_url(); ?>index.php/C_owner/viewReview/<?php echo $row['ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Review</button></a>
                   </div>
                 </div>
               </div>

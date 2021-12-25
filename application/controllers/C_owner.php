@@ -43,7 +43,7 @@ class C_owner extends CI_Controller{
 
     function deleteBooking($booking_id) {
         $this->M_owner->deleteBooking($booking_id);
-        redirect(base_url("index.php/C_owner/"));
+        redirect(base_url("index.php/C_owner/viewBooking"));
     }
 
     function detailVenues($id_venues) {
@@ -68,8 +68,60 @@ class C_owner extends CI_Controller{
 		$this->im_render->main_owner('owner/detailFields', $data); 
     }
 
+    function detailBooking($id_booking) {
+        $data = new stdClass();
+
+        $data->Booking = $this->M_owner->getBookingById($id_booking);
+        $data->Player = $this->M_owner->getListPlayerInBooking($id_booking);
+
+        $data->menu = "booking";
+		$this->im_render->main_owner('owner/detailBooking', $data); 
+    }
+
     function reviewField($booking_id) {
         $data = new stdClass();
         $data->Review = $this->M_owner->getReviewInField($booking_id);
+    }
+
+    function viewReview($booking_id) {
+        $data = new stdClass();
+        $data->Review = $this->M_owner->getReviewInField($booking_id);
+        $data->menu = "booking";
+        $data->Booking = $booking_id;
+
+        $this->im_render->main_owner('owner/viewReview', $data);
+    }
+
+    function deleteField($field_id) {
+        $this->M_owner->deleteField($field_id);
+        redirect(base_url("index.php/C_owner/viewField"));
+    }
+
+    function deleteVenue($venue_id) {
+        $this->M_owner->deleteVenue($venue_id);
+        redirect(base_url("index.php/C_owner/"));
+    }
+
+    function deleteReview($review_id) {
+        $this->M_owner->deleteReview($review_id);
+        redirect(base_url("index.php/C_owner/"));
+    }
+
+    function insertVenue() {
+        $data = new stdClass();
+        $data->Cities = $this->M_owner->getCities();
+        $data->menu = "venue";
+		$this->im_render->main_owner('owner/addVenue', $data);
+    }
+
+    function addVenue() {
+        $this->M_owner->uploadGambar();
+        $this->M_owner->addVenue();
+        redirect(base_url("index.php/C_owner/"));
+    }
+
+    function addField() {
+        $this->M_owner->addField();
+        redirect(base_url("index.php/C_owner/viewFields/" . $_POST['FieldId']));
     }
 }
