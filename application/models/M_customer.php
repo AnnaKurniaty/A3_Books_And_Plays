@@ -144,7 +144,6 @@ class M_customer extends CI_Model
 
   function addReview($data)
 		{
-			$tambah = $this->db->insert('REVIEWS',$data);
-			return $tambah;
+			$this->db->insert('REVIEWS',$data);
 		}
 }

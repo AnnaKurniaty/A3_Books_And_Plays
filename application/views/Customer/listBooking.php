@@ -40,7 +40,7 @@
                     <p class="card-text"><?= $row['BOOKING_STATUS']; ?></p>
                   </div>
                   <div class="col" style="padding:20px; box-sizing:auto; margin-top:15px;">
-                    <a href="<?php echo base_url(); ?>index.php/C_customer/detailBooking/<?php echo $row['BOOKINGS_ID']; ?>"><button class="btn-sm btn-primary" style="border: none;"<?php if ($row['BOOKING_STATUS'] == "Game Over") { echo "disabled"; }else{ echo "";}; ?>>Lihat detail</button></a>
+                    <a href="<?php echo base_url(); ?>index.php/C_customer/detailBooking/<?php echo $row['BOOKINGS_ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Lihat detail</button></a>
                   </div>
                   <div class="col" style="padding:20px; box-sizing:auto; margin-top:15px;">
                     <a href="<?php echo base_url(); ?>index.php/C_customer/viewReview/<?php echo $row['BOOKINGS_ID']; ?>">

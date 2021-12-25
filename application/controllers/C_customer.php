@@ -77,10 +77,6 @@ class C_customer extends CI_Controller{
         redirect(base_url("index.php/C_customer/detailBooking/" . $id_booking));
     }
 
-    function unjoinUserFromBooking($user_id, $booking_id) {
-        
-    }
-
     function viewBooking() {
         $data = new stdClass();
         $user_id = $_SESSION['ID'];

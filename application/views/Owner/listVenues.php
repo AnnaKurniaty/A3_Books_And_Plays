@@ -26,7 +26,8 @@
                       <div class="card-body">
                         <h5 class="card-title"><?= $row['NAME']; ?></h5>
                         <p class="card-text" style="display:block; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; max-height:100px;"><?= $row['DESCRIPTION']->load(); ?></p>
-                        <a href="<?php echo base_url(); ?>index.php/C_customer/detailVenues/<?php echo $row['ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Lihat detail</button></a>
+                        <!-- ini benerin hrefnya -->
+                        <a href="<?php echo base_url(); ?>index.php/C_owner/detailVenues/<?php echo $row['ID']; ?>"><button class="btn-sm btn-primary" style="border: none;">Lihat detail</button></a>
                       </div>
                     </div>
                   </div>

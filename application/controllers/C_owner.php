@@ -40,4 +40,36 @@ class C_owner extends CI_Controller{
         $data->menu = "booking";
 		$this->im_render->main_owner('owner/listBooking', $data);
     }
+
+    function deleteBooking($booking_id) {
+        $this->M_owner->deleteBooking($booking_id);
+        redirect(base_url("index.php/C_owner/"));
+    }
+
+    function detailVenues($id_venues) {
+        $data = new stdClass();
+
+        $data->Venue = $this->M_owner->getVenueById($id_venues);
+        $data->Fields = $this->M_owner->getFieldInVenue($id_venues);
+        $data->Address = $this->M_owner->getAddress($id_venues);
+
+        //untuk menu active
+        $data->menu = "venue";
+		$this->im_render->main_owner('owner/detailVenues', $data); 
+    }
+
+    function detailField($id_field) {
+        $data = new stdClass();
+
+        $data->Field = $this->M_owner->getFieldById((int)$id_field);
+        $data->Booking = $this->M_owner->getBookingInField($id_field);
+
+        $data->menu = "fields";
+		$this->im_render->main_owner('owner/detailFields', $data); 
+    }
+
+    function reviewField($booking_id) {
+        $data = new stdClass();
+        $data->Review = $this->M_owner->getReviewInField($booking_id);
+    }
 }
